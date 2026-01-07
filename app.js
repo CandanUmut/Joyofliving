@@ -7,6 +7,7 @@
 */
 
 const STORE_KEY = "joy_of_living_survey_v2";
+const SOUND_KEY = "joy_sound_enabled";
 
 const DOMAINS = [
   { key: "energy", tr: "Enerji & Beden", en: "Energy & Body", icon: "⚡" },
@@ -59,38 +60,38 @@ const SCALE = {
 // QUESTION BANK (must be included exactly as data in app.js)
 // Use a questions array with objects: {id, domain, reverse, text: {tr, en}}
 const QUESTIONS = [
-  { id: 1, domain: "energy", reverse: false, text: { tr: "Son 7 günde sabahları uyandığımda yaşama enerjisi hissettim.", en: "In the last 7 days, I felt a sense of life energy when I woke up." } },
+  { id: 1, domain: "energy", reverse: false, text: { tr: "Son 7 günde sabahları yaşama enerjisiyle uyandım.", en: "In the last 7 days, I woke up with a sense of life energy." } },
   { id: 2, domain: "energy", reverse: false, text: { tr: "Son 7 günde gün içinde bedenim canlı ve hareket etmeye hazırdı.", en: "In the last 7 days, my body felt lively and ready to move." } },
-  { id: 3, domain: "energy", reverse: false, text: { tr: "Son 7 günde uykumun süresi ve kalitesi günümü taşımaya yetti.", en: "In the last 7 days, my sleep duration and quality supported my day." } },
-  { id: 4, domain: "energy", reverse: false, text: { tr: "Son 7 günde zihnim çoğunlukla netti; bulanıklık azdı.", en: "In the last 7 days, my mind was mostly clear; brain fog was low." } },
-  { id: 5, domain: "energy", reverse: false, text: { tr: "Son 7 günde gün ışığı/temiz hava/kısa yürüyüş gibi şeyleri düzenli aldım.", en: "In the last 7 days, I regularly got daylight, fresh air, or short walks." } },
-  { id: 6, domain: "energy", reverse: true, text: { tr: "Son 7 günde gün içinde sık sık yorgun ve bitkin hissettim.", en: "In the last 7 days, I often felt tired or exhausted during the day." } },
+  { id: 3, domain: "energy", reverse: false, text: { tr: "Son 7 günde uykum günümü taşımaya yetti.", en: "In the last 7 days, my sleep was enough to carry me through the day." } },
+  { id: 4, domain: "energy", reverse: false, text: { tr: "Son 7 günde zihnim çoğunlukla netti.", en: "In the last 7 days, my mind was mostly clear." } },
+  { id: 5, domain: "energy", reverse: false, text: { tr: "Son 7 günde düzenli olarak gün ışığı, temiz hava veya kısa yürüyüş aldım.", en: "In the last 7 days, I regularly got daylight, fresh air, or short walks." } },
+  { id: 6, domain: "energy", reverse: true, text: { tr: "Son 7 günde gün içinde sık sık yorgun ve bitkindim.", en: "In the last 7 days, I often felt tired or depleted during the day." } },
 
-  { id: 7, domain: "meaning", reverse: false, text: { tr: "Son 7 günde yaptıklarımın anlamlı olduğuna dair içsel bir his vardı.", en: "In the last 7 days, I had an inner sense that what I do is meaningful." } },
-  { id: 8, domain: "meaning", reverse: false, text: { tr: "Son 7 günde şükredebildiğim şeyleri fark ettim.", en: "In the last 7 days, I noticed things I could be grateful for." } },
-  { id: 9, domain: "meaning", reverse: false, text: { tr: "Son 7 günde değerlerimle (adalet, merhamet vb.) uyumlu yaşadım.", en: "In the last 7 days, I lived in line with my values (justice, compassion, etc.)." } },
-  { id: 10, domain: "meaning", reverse: false, text: { tr: "Son 7 günde maneviyat/din/dua/tefekkür bana güç verdi.", en: "In the last 7 days, spirituality/religion/prayer/reflection gave me strength." } },
+  { id: 7, domain: "meaning", reverse: false, text: { tr: "Son 7 günde yaptıklarımın anlamlı olduğunu hissettim.", en: "In the last 7 days, I felt that what I did was meaningful." } },
+  { id: 8, domain: "meaning", reverse: false, text: { tr: "Son 7 günde şükredebileceğim şeyleri fark ettim.", en: "In the last 7 days, I noticed things I could be grateful for." } },
+  { id: 9, domain: "meaning", reverse: false, text: { tr: "Son 7 günde değerlerimle uyumlu yaşadım.", en: "In the last 7 days, I lived in line with my values." } },
+  { id: 10, domain: "meaning", reverse: false, text: { tr: "Son 7 günde maneviyat, dua veya tefekkür bana güç verdi.", en: "In the last 7 days, spirituality, prayer, or reflection gave me strength." } },
   { id: 11, domain: "meaning", reverse: false, text: { tr: "Son 7 günde geleceğe dair makul bir umut hissedebildim.", en: "In the last 7 days, I could feel a reasonable sense of hope about the future." } },
   { id: 12, domain: "meaning", reverse: true, text: { tr: "Son 7 günde günlerim amaçsız ve boş geçti.", en: "In the last 7 days, my days felt pointless and empty." } },
 
-  { id: 13, domain: "connection", reverse: false, text: { tr: "Son 7 günde en az bir kişiyle gerçek bir bağ/sohbet kurdum.", en: "In the last 7 days, I had at least one genuine connection or conversation." } },
-  { id: 14, domain: "connection", reverse: false, text: { tr: "Son 7 günde bir topluluğa/aidiyete yakın hissettim (aile, arkadaş, mahalle vb.).", en: "In the last 7 days, I felt close to a community or sense of belonging (family, friends, local group)." } },
+  { id: 13, domain: "connection", reverse: false, text: { tr: "Son 7 günde en az bir kişiyle gerçek bir bağ kurdum.", en: "In the last 7 days, I had at least one genuine connection." } },
+  { id: 14, domain: "connection", reverse: false, text: { tr: "Son 7 günde bir topluluğa veya aidiyete yakın hissettim.", en: "In the last 7 days, I felt close to a community or belonging." } },
   { id: 15, domain: "connection", reverse: false, text: { tr: "Son 7 günde insanlarla birlikteyken anlaşılmış hissettim.", en: "In the last 7 days, I felt understood when I was with people." } },
-  { id: 16, domain: "connection", reverse: false, text: { tr: "Son 7 günde destek istemem gerektiğinde isteyebileceğimi hissettim.", en: "In the last 7 days, I felt I could ask for support when I needed it." } },
+  { id: 16, domain: "connection", reverse: false, text: { tr: "Son 7 günde ihtiyaç duyduğumda destek isteyebileceğimi hissettim.", en: "In the last 7 days, I felt I could ask for support when needed." } },
   { id: 17, domain: "connection", reverse: false, text: { tr: "Son 7 günde başkalarına küçük de olsa faydam dokundu.", en: "In the last 7 days, I helped others in small ways." } },
   { id: 18, domain: "connection", reverse: true, text: { tr: "Son 7 günde kendimi yalnız ve kopuk hissettim.", en: "In the last 7 days, I felt lonely and disconnected." } },
 
   { id: 19, domain: "agency", reverse: false, text: { tr: "Son 7 günde ilerleme hissi veren bir şey yaptım.", en: "In the last 7 days, I did something that gave me a sense of progress." } },
-  { id: 20, domain: "agency", reverse: false, text: { tr: "Son 7 günde yapmam gerekeni aşırı ertelemeden başlatabildim.", en: "In the last 7 days, I could start what I needed to do without excessive procrastination." } },
-  { id: 21, domain: "agency", reverse: false, text: { tr: "Son 7 günde zor duygular geldiğinde tamamen dağılmadan yönetebildim.", en: "In the last 7 days, when hard emotions came up, I could manage them without falling apart." } },
+  { id: 20, domain: "agency", reverse: false, text: { tr: "Son 7 günde yapmam gerekeni aşırı ertelemeden başlattım.", en: "In the last 7 days, I started what I needed without excessive procrastination." } },
+  { id: 21, domain: "agency", reverse: false, text: { tr: "Son 7 günde zor duygular geldiğinde dağılmadan yönetebildim.", en: "In the last 7 days, when hard emotions came up, I could manage them without falling apart." } },
   { id: 22, domain: "agency", reverse: false, text: { tr: "Son 7 günde kendime verdiğim sözleri çoğunlukla tuttum.", en: "In the last 7 days, I mostly kept promises I made to myself." } },
-  { id: 23, domain: "agency", reverse: false, text: { tr: "Son 7 günde öğrenme/okuma/üretme gibi zihinsel beslenmeler yaptım.", en: "In the last 7 days, I engaged in mental nourishment like learning, reading, or creating." } },
+  { id: 23, domain: "agency", reverse: false, text: { tr: "Son 7 günde öğrenme, okuma veya üretme gibi zihinsel beslenmeler yaptım.", en: "In the last 7 days, I engaged in mental nourishment like learning, reading, or creating." } },
   { id: 24, domain: "agency", reverse: true, text: { tr: "Son 7 günde kendimi kontrol edemiyor gibi hissettim.", en: "In the last 7 days, I felt like I couldn’t control myself." } },
 
-  { id: 25, domain: "habits", reverse: false, text: { tr: "Son 7 günde sosyal medya/short video gibi şeylerde kontrol bende hissettim.", en: "In the last 7 days, I felt in control with social media or short videos." } },
-  { id: 26, domain: "habits", reverse: true, text: { tr: "Son 7 günde dürtüsel tüketim (scroll, atıştırma, alışveriş vb.) günümü ele geçirdi.", en: "In the last 7 days, impulsive consumption (scrolling, snacking, shopping) took over my day." } },
+  { id: 25, domain: "habits", reverse: false, text: { tr: "Son 7 günde sosyal medya veya kısa video kullanımında kontrol bende hissettim.", en: "In the last 7 days, I felt in control with social media or short videos." } },
+  { id: 26, domain: "habits", reverse: true, text: { tr: "Son 7 günde dürtüsel tüketim (scroll, atıştırma, alışveriş) günümü ele geçirdi.", en: "In the last 7 days, impulsive consumption (scrolling, snacking, shopping) took over my day." } },
   { id: 27, domain: "habits", reverse: false, text: { tr: "Son 7 günde odak gerektiren işe 20–40 dk bloklar halinde girebildim.", en: "In the last 7 days, I could do 20–40 minute blocks of focused work." } },
-  { id: 28, domain: "habits", reverse: false, text: { tr: "Son 7 günde küçük “keyif adaları” oluşturdum (müzik, çay, doğa, sohbet).", en: "In the last 7 days, I created small “joy islands” (music, tea, nature, conversation)." } },
+  { id: 28, domain: "habits", reverse: false, text: { tr: "Son 7 günde küçük keyif adaları oluşturdum (müzik, çay, doğa, sohbet).", en: "In the last 7 days, I created small joy islands (music, tea, nature, conversation)." } },
   { id: 29, domain: "habits", reverse: false, text: { tr: "Son 7 günde gün sonunda tatlı bir “tamamladım” hissi vardı.", en: "In the last 7 days, I had a satisfying sense of completion by day’s end." } },
   { id: 30, domain: "habits", reverse: false, text: { tr: "Son 7 günde uyarana kaçmak yerine (telefon vb.) sıkılmayı tolere edip sakin kalabildim.", en: "In the last 7 days, instead of escaping into stimuli (phone, etc.), I could tolerate boredom and stay calm." } },
 ];
@@ -168,6 +169,7 @@ const SCORE_BANDS = [
 // UI references
 const UI = {
   langToggle: document.getElementById("langToggle"),
+  soundToggle: document.getElementById("soundToggle"),
   resetAll: document.getElementById("resetAll"),
 
   intro: document.getElementById("view_intro"),
@@ -180,6 +182,11 @@ const UI = {
   introTitle: document.getElementById("ui_intro_title"),
   introLead: document.getElementById("ui_intro_lead"),
   introList: document.getElementById("ui_intro_list"),
+  guide: document.getElementById("ui_guide"),
+  guideSummary: document.getElementById("ui_guide_summary"),
+  guideIntro: document.getElementById("ui_guide_intro"),
+  guideList: document.getElementById("ui_guide_list"),
+  soundNote: document.getElementById("ui_sound_note"),
   timeEstimate: document.getElementById("ui_time_estimate"),
   answeredCount: document.getElementById("ui_answered_count"),
   privacy: document.getElementById("ui_privacy"),
@@ -242,6 +249,18 @@ function loadState() {
   return safeParseJSON(raw);
 }
 
+function loadSoundPreference() {
+  const raw = localStorage.getItem(SOUND_KEY);
+  if (!raw) return null;
+  if (raw === "1" || raw === "true") return true;
+  if (raw === "0" || raw === "false") return false;
+  return null;
+}
+
+function saveSoundPreference(enabled) {
+  localStorage.setItem(SOUND_KEY, enabled ? "1" : "0");
+}
+
 function getDefaultState() {
   return {
     lang: "en",
@@ -251,6 +270,7 @@ function getDefaultState() {
     answers: {},
     hintDismissed: false,
     editingFromReview: false,
+    soundEnabled: false,
   };
 }
 
@@ -283,6 +303,9 @@ function normalizeState(raw) {
   normalized.answers = cleanAnswers;
   normalized.hintDismissed = Boolean(normalized.hintDismissed);
   normalized.editingFromReview = false;
+  normalized.soundEnabled = typeof normalized.soundEnabled === "boolean"
+    ? normalized.soundEnabled
+    : false;
 
   if (!["intro", "survey", "review", "results"].includes(normalized.view)) {
     normalized.view = "intro";
@@ -294,8 +317,12 @@ function normalizeState(raw) {
 let state = (() => {
   const storedRaw = loadState();
   const stored = normalizeState(storedRaw);
+  const soundPref = loadSoundPreference();
   if (!stored && storedRaw) {
     clearState();
+  }
+  if (stored && typeof soundPref === "boolean") {
+    stored.soundEnabled = soundPref;
   }
   return stored;
 })();
@@ -304,14 +331,20 @@ if (!state) {
   state = getDefaultState();
   const ql = qsLang();
   if (ql) state.lang = ql;
+  const soundPref = loadSoundPreference();
+  if (typeof soundPref === "boolean") {
+    state.soundEnabled = soundPref;
+  }
 }
 
 function saveState() {
   localStorage.setItem(STORE_KEY, JSON.stringify(state));
+  saveSoundPreference(state.soundEnabled);
 }
 
 function clearState() {
   localStorage.removeItem(STORE_KEY);
+  localStorage.removeItem(SOUND_KEY);
 }
 
 function t(tr, en) {
@@ -330,6 +363,77 @@ function answeredFor(qId) {
 
 function answeredCount() {
   return Object.keys(state.answers).length;
+}
+
+let audioCtx = null;
+
+function getAudioContext() {
+  if (!audioCtx) {
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx) return null;
+    audioCtx = new Ctx();
+  }
+  if (audioCtx.state === "suspended") {
+    audioCtx.resume();
+  }
+  return audioCtx;
+}
+
+function canPlaySound() {
+  return state.soundEnabled;
+}
+
+function playTone({ frequency, duration = 0.08, type = "sine", volume = 0.03, when = 0 }) {
+  const ctx = getAudioContext();
+  if (!ctx) return;
+  const start = ctx.currentTime + when;
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = type;
+  osc.frequency.setValueAtTime(frequency, start);
+  gain.gain.setValueAtTime(0.0001, start);
+  gain.gain.exponentialRampToValueAtTime(volume, start + 0.01);
+  gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start(start);
+  osc.stop(start + duration + 0.02);
+}
+
+function optionSelectSound() {
+  if (!canPlaySound()) return;
+  playTone({ frequency: 880, duration: 0.05, type: "sine", volume: 0.025 });
+}
+
+function navSound() {
+  if (!canPlaySound()) return;
+  const ctx = getAudioContext();
+  if (!ctx) return;
+  const start = ctx.currentTime;
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = "triangle";
+  osc.frequency.setValueAtTime(360, start);
+  osc.frequency.exponentialRampToValueAtTime(220, start + 0.08);
+  gain.gain.setValueAtTime(0.0001, start);
+  gain.gain.exponentialRampToValueAtTime(0.018, start + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.1);
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start(start);
+  osc.stop(start + 0.12);
+}
+
+function finishSound() {
+  if (!canPlaySound()) return;
+  playTone({ frequency: 523.25, duration: 0.12, type: "sine", volume: 0.02 });
+  playTone({ frequency: 659.25, duration: 0.12, type: "sine", volume: 0.02, when: 0.08 });
+  playTone({ frequency: 783.99, duration: 0.16, type: "sine", volume: 0.02, when: 0.16 });
+}
+
+function initAudioOnGesture() {
+  const ctx = getAudioContext();
+  if (!ctx) return;
 }
 
 function setUiTexts() {
@@ -354,6 +458,23 @@ function setUiTexts() {
     <li>${t("Toplam skor (0–100) + 5 alt skor", "Total score (0–100) + 5 sub-scores")}</li>
     <li>${t("En düşük alanlarına göre mikro-öneriler", "Micro-actions based on your lowest areas")}</li>
   `;
+
+  UI.guideSummary.textContent = t("Cevaplama rehberi", "Response guide");
+  UI.guideIntro.textContent = t(
+    "Bu sorular son 7 gün içindir. Aşağıdaki karşılıkları kullan.",
+    "These questions refer to the last 7 days. Use the guide below."
+  );
+  UI.guideList.innerHTML = `
+    <li>${t("Her zaman: Neredeyse her gün / çoğu gün (6–7 gün)", "Always: Almost every day / most days (6–7 days)")}</li>
+    <li>${t("Sıklıkla: Sık oldu (4–5 gün)", "Often: Many days (4–5)")}</li>
+    <li>${t("Bazen: Ara ara (2–3 gün)", "Sometimes: A few days (2–3)")}</li>
+    <li>${t("Nadiren: 1 gün ya da çok az", "Rarely: 1 day or very little")}</li>
+    <li>${t("Hiç: 0 gün / hiç olmadı", "Never: 0 days / not at all")}</li>
+  `;
+  UI.soundNote.textContent = t(
+    "Sesler isteğe bağlıdır. Ayarı üstteki “Ses” düğmesinden değiştirebilirsin.",
+    "Sound is optional. You can toggle it from the “Sound” button above."
+  );
 
   UI.privacy.textContent = t(
     "Hiçbir veri gönderilmez; her şey tarayıcında kalır.",
@@ -407,6 +528,10 @@ function setUiTexts() {
   );
 
   UI.langToggle.textContent = (state.lang === "tr") ? "EN" : "TR";
+  UI.soundToggle.textContent = state.soundEnabled
+    ? t("Ses: Açık", "Sound: On")
+    : t("Ses: Kapalı", "Sound: Off");
+  UI.soundToggle.setAttribute("aria-pressed", String(state.soundEnabled));
 }
 
 function show(view) {
@@ -487,6 +612,7 @@ function renderScale(q) {
       state.answers[q.id] = v;
       state.hintDismissed = true;
       saveState();
+      optionSelectSound();
 
       UI.scaleForm.querySelectorAll(".option").forEach(el => el.classList.remove("selected"));
       const opt = inp.closest(".option");
@@ -510,6 +636,7 @@ function renderQuickSelect(q) {
       state.answers[q.id] = val;
       state.hintDismissed = true;
       saveState();
+      optionSelectSound();
       renderSurveyStep();
       updateHint();
       updateAnsweredCount();
@@ -560,6 +687,12 @@ function renderSurveyStep() {
 
   renderScale(q);
   renderQuickSelect(q);
+  [UI.question, UI.scaleForm, UI.quickSelect].forEach(el => {
+    if (!el) return;
+    el.classList.remove("step-enter");
+    void el.offsetWidth;
+    el.classList.add("step-enter");
+  });
   updateNav();
   updateHint();
   show("survey");
@@ -622,7 +755,7 @@ function renderReview() {
   show("review");
 }
 
-function renderResults() {
+function renderResults({ playSound = false } = {}) {
   setUiTexts();
   const { total100, sub100 } = computeScores();
 
@@ -669,6 +802,9 @@ function renderResults() {
     `;
   }).join("");
 
+  if (playSound) {
+    finishSound();
+  }
   show("results");
 }
 
@@ -771,7 +907,7 @@ function startSurvey() {
 function continueSurvey() {
   const allAnswered = QUESTIONS.every(q => answeredFor(q.id));
   if (allAnswered) {
-    renderResults();
+    renderResults({ playSound: true });
     return;
   }
   state.started = true;
@@ -789,11 +925,12 @@ function finishSurvey() {
 function confirmReview() {
   state.editingFromReview = false;
   saveState();
-  renderResults();
+  renderResults({ playSound: true });
 }
 
 function goNext() {
   const isLast = state.step === QUESTIONS.length - 1;
+  navSound();
   if (isLast) {
     if (state.editingFromReview) {
       renderReview();
@@ -812,6 +949,7 @@ function goBack() {
     renderReview();
     return;
   }
+  navSound();
   state.step = Math.max(0, state.step - 1);
   saveState();
   renderSurveyStep();
@@ -841,7 +979,19 @@ function toggleLang() {
   }
 }
 
+function toggleSound() {
+  state.soundEnabled = !state.soundEnabled;
+  saveState();
+  setUiTexts();
+  if (state.soundEnabled) {
+    initAudioOnGesture();
+    optionSelectSound();
+  }
+}
+
 function bindEvents() {
+  document.addEventListener("pointerdown", initAudioOnGesture, { once: true, capture: true });
+
   UI.startBtn.addEventListener("click", startSurvey);
   UI.continueBtn.addEventListener("click", continueSurvey);
   UI.restartBtn.addEventListener("click", resetAll);
@@ -855,6 +1005,7 @@ function bindEvents() {
   UI.resetAll.addEventListener("click", resetAll);
   UI.retakeBtn.addEventListener("click", resetAll);
   UI.langToggle.addEventListener("click", toggleLang);
+  UI.soundToggle.addEventListener("click", toggleSound);
   UI.copyBtn.addEventListener("click", copySummary);
   UI.exportBtn.addEventListener("click", exportJSON);
 
@@ -884,6 +1035,7 @@ function bindEvents() {
       state.answers[q.id] = val;
       state.hintDismissed = true;
       saveState();
+      optionSelectSound();
       renderSurveyStep();
       return;
     }
