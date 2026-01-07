@@ -1,0 +1,124 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Joy of Living Survey • Yaşama Sevinci Anketi</title>
+  <meta name="color-scheme" content="dark light" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="wrap header">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">✦</div>
+      <div>
+        <h1 id="ui_title">Joy of Living Survey</h1>
+        <p id="ui_subtitle" class="muted">
+          A short bilingual self-reflection survey. No data leaves your device.
+        </p>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button id="langToggle" class="btn ghost" type="button" aria-label="Toggle language">TR</button>
+      <button id="resetAll" class="btn ghost" type="button">Reset</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Intro -->
+    <section id="view_intro" class="card">
+      <h2 id="ui_intro_title">How it works</h2>
+      <ul id="ui_intro_list" class="list">
+        <li>30 questions • 0–4 scale • ~3–5 minutes</li>
+        <li>Total score (0–100) + 5 sub-scores</li>
+        <li>Micro-actions based on your lowest areas</li>
+      </ul>
+
+      <div class="notice" role="note" aria-label="Privacy note">
+        <p id="ui_privacy">No data is sent anywhere; everything stays in your browser.</p>
+      </div>
+
+      <div class="disclaimer" role="note" aria-label="Disclaimer">
+        <p id="ui_disclaimer">
+          This is not a medical diagnosis. If you feel in danger or are thinking of self-harm, seek immediate help
+          (US: call/text 988 or your local emergency number).
+        </p>
+      </div>
+
+      <div class="row">
+        <button id="startBtn" class="btn primary" type="button">Start</button>
+      </div>
+    </section>
+
+    <!-- Survey -->
+    <section id="view_survey" class="card hidden" aria-live="polite">
+      <div class="topline">
+        <span id="ui_domain_pill" class="pill">Domain</span>
+        <span id="ui_counter" class="muted small">1 / 30</span>
+      </div>
+
+      <div class="progress" aria-label="Progress">
+        <div id="progressBar" class="progress-bar" style="width:0%"></div>
+      </div>
+
+      <h2 id="ui_question" class="question">Question</h2>
+
+      <form id="scaleForm" class="scale" aria-label="Answer scale">
+        <!-- injected by app.js -->
+      </form>
+
+      <div class="nav">
+        <button id="backBtn" class="btn" type="button">Back</button>
+        <button id="nextBtn" class="btn primary" type="button" disabled>Next</button>
+      </div>
+
+      <p id="ui_hint" class="muted small">
+        Tip: Use number keys 1–5 to answer quickly. Press Enter to go Next.
+      </p>
+    </section>
+
+    <!-- Results -->
+    <section id="view_results" class="card hidden">
+      <div class="results-header">
+        <div>
+          <h2 id="ui_results_title">Your results</h2>
+          <p id="ui_results_subtitle" class="muted">A snapshot of your current “joy of living” signals.</p>
+        </div>
+        <button id="copyBtn" class="btn ghost" type="button">Copy summary</button>
+      </div>
+
+      <div class="total">
+        <div id="ui_total_score" class="total-score">—</div>
+        <div id="ui_total_label" class="muted">Total (0–100)</div>
+      </div>
+
+      <div id="subscaleGrid" class="grid" aria-label="Subscale scores">
+        <!-- injected -->
+      </div>
+
+      <section class="card inner" aria-label="Micro-actions">
+        <h3 id="ui_actions_title">Micro-actions (based on your lowest areas)</h3>
+        <div id="actionsList" class="actions">
+          <!-- injected -->
+        </div>
+      </section>
+
+      <div class="row">
+        <button id="retakeBtn" class="btn" type="button">Retake</button>
+      </div>
+
+      <p id="ui_results_disclaimer" class="muted small">
+        This tool is for reflection only, not diagnosis.
+      </p>
+    </section>
+  </main>
+
+  <footer class="wrap footer muted small">
+    <span>Static • Offline-ready • GitHub Pages</span>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
