@@ -29,7 +29,20 @@
   <main class="wrap">
     <!-- Intro -->
     <section id="view_intro" class="card">
-      <h2 id="ui_intro_title">How it works</h2>
+      <h2 id="ui_intro_title">Welcome</h2>
+      <p id="ui_intro_lead" class="lead muted">
+        A quick, supportive check-in you can repeat weekly.
+      </p>
+
+      <div class="intro-meta">
+        <div class="meta-item">
+          <span id="ui_time_estimate">~3–5 minutes</span>
+        </div>
+        <div class="meta-item">
+          <span id="ui_answered_count">0 / 30 answered</span>
+        </div>
+      </div>
+
       <ul id="ui_intro_list" class="list">
         <li>30 questions • 0–4 scale • ~3–5 minutes</li>
         <li>Total score (0–100) + 5 sub-scores</li>
@@ -47,29 +60,39 @@
         </p>
       </div>
 
-      <div class="row">
+      <div class="row" id="introActions">
         <button id="startBtn" class="btn primary" type="button">Start</button>
+        <button id="continueBtn" class="btn primary hidden" type="button">Continue</button>
+        <button id="restartBtn" class="btn ghost hidden" type="button">Restart</button>
       </div>
     </section>
 
     <!-- Survey -->
     <section id="view_survey" class="card hidden" aria-live="polite">
-      <div class="topline">
-        <span id="ui_domain_pill" class="pill">Domain</span>
-        <span id="ui_counter" class="muted small">1 / 30</span>
+      <div class="survey-header">
+        <h2 id="ui_survey_title">Survey</h2>
+        <div class="topline">
+          <span id="ui_domain_pill" class="pill">Domain</span>
+          <span id="ui_counter" class="muted small">1 / 30</span>
+        </div>
       </div>
 
       <div class="progress" aria-label="Progress">
         <div id="progressBar" class="progress-bar" style="width:0%"></div>
       </div>
 
-      <h2 id="ui_question" class="question">Question</h2>
+      <h3 id="ui_question" class="question">Question</h3>
+      <p id="ui_scale_hint" class="muted small">0 = Never · 4 = Always</p>
 
       <form id="scaleForm" class="scale" aria-label="Answer scale">
         <!-- injected by app.js -->
       </form>
 
-      <div class="nav">
+      <div id="quickSelect" class="quick-select" aria-label="Quick select">
+        <!-- injected -->
+      </div>
+
+      <div class="nav sticky">
         <button id="backBtn" class="btn" type="button">Back</button>
         <button id="nextBtn" class="btn primary" type="button" disabled>Next</button>
       </div>
@@ -79,6 +102,23 @@
       </p>
     </section>
 
+    <!-- Review -->
+    <section id="view_review" class="card hidden" aria-live="polite">
+      <div class="review-header">
+        <h2 id="ui_review_title">Review answers</h2>
+        <p id="ui_review_subtitle" class="muted">Tap any item to edit before seeing results.</p>
+      </div>
+
+      <div id="reviewList" class="review-list" aria-label="Review answers list">
+        <!-- injected -->
+      </div>
+
+      <div class="nav">
+        <button id="reviewBackBtn" class="btn" type="button">Back</button>
+        <button id="reviewConfirmBtn" class="btn primary" type="button">See results</button>
+      </div>
+    </section>
+
     <!-- Results -->
     <section id="view_results" class="card hidden">
       <div class="results-header">
@@ -86,7 +126,10 @@
           <h2 id="ui_results_title">Your results</h2>
           <p id="ui_results_subtitle" class="muted">A snapshot of your current “joy of living” signals.</p>
         </div>
-        <button id="copyBtn" class="btn ghost" type="button">Copy summary</button>
+        <div class="results-actions">
+          <button id="copyBtn" class="btn ghost" type="button">Copy summary</button>
+          <button id="exportBtn" class="btn ghost" type="button">Export JSON</button>
+        </div>
       </div>
 
       <div class="total">
@@ -94,15 +137,32 @@
         <div id="ui_total_label" class="muted">Total (0–100)</div>
       </div>
 
+      <div id="ui_interpretation" class="interpretation" aria-label="Score interpretation">
+        <!-- injected -->
+      </div>
+
       <div id="subscaleGrid" class="grid" aria-label="Subscale scores">
         <!-- injected -->
       </div>
+
+      <section class="card inner" aria-label="Focus areas">
+        <h3 id="ui_focus_title">What to focus on next</h3>
+        <p id="ui_focus_subtitle" class="muted small">Your lowest two areas and why they matter.</p>
+        <div id="focusList" class="focus-list">
+          <!-- injected -->
+        </div>
+      </section>
 
       <section class="card inner" aria-label="Micro-actions">
         <h3 id="ui_actions_title">Micro-actions (based on your lowest areas)</h3>
         <div id="actionsList" class="actions">
           <!-- injected -->
         </div>
+      </section>
+
+      <section class="card inner" aria-label="Weekly use">
+        <h3 id="ui_weekly_title">Use this weekly</h3>
+        <p id="ui_weekly_text" class="muted">Take it once a week, compare trends, and focus on your lowest 1–2 areas.</p>
       </section>
 
       <div class="row">
