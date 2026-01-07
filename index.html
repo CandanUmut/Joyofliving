@@ -21,6 +21,7 @@
     </div>
 
     <div class="header-actions">
+      <button id="soundToggle" class="btn ghost" type="button" aria-pressed="false">Sound</button>
       <button id="langToggle" class="btn ghost" type="button" aria-label="Toggle language">TR</button>
       <button id="resetAll" class="btn ghost" type="button">Reset</button>
     </div>
@@ -48,6 +49,15 @@
         <li>Total score (0–100) + 5 sub-scores</li>
         <li>Micro-actions based on your lowest areas</li>
       </ul>
+
+      <details id="ui_guide" class="guide" open>
+        <summary id="ui_guide_summary">What do these options mean?</summary>
+        <div class="guide-body">
+          <p id="ui_guide_intro" class="muted small"></p>
+          <ul id="ui_guide_list" class="list small"></ul>
+          <p id="ui_sound_note" class="muted small"></p>
+        </div>
+      </details>
 
       <div class="notice" role="note" aria-label="Privacy note">
         <p id="ui_privacy">No data is sent anywhere; everything stays in your browser.</p>
